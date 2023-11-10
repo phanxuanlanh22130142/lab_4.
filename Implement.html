@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Thiết lập kiểu và trang trí cho trang HTML */
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="number"], button {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+    </style>
+    <title>Quản lý đối tượng gà</title>
+</head>
+<body>
+    <h1><img src="images/chicken.jpg" alt="chicken-left" class="icon"> Quản lý đối tượng gà <img src="images/chicken.jpg" alt="chicken-right" class="icon"></h1>
+
+
+    <form id="chickenForm">
+        <input type="text" id="chickenName" placeholder="Tên gà">
+        <input type="number" id="chickenAge" placeholder="Tuổi">
+        <input type="text" id="chickenFood" placeholder="Thức ăn">
+        <button type="button" onclick="addChicken()">Thêm</button>
+    </form>
+
+    <table id="chickenTable">
+        <tr>
+            <th>Tên</th>
+            <th>Tuổi</th>
+            <th>Thức ăn</th>
+            <th>Chỉnh sửa</th>
+            <th>Xóa</th>
+        </tr>
+        <!-- Dữ liệu về gà sẽ hiển thị ở đây -->
+    </table>
+
+    <input type="text" id="searchInput" onkeyup="searchChicken()" placeholder="Tìm kiếm gà...">
+
+    <script>
+        // Khởi tạo dữ liệu mẫu về gà
+        var chickens = [
+            { name: "Gà Ác", age: 26 ,food: "Ngô"},
+            { name: "Gà Ri", age: 37 ,food: "Cám"},
+            { name: "Gà Tre", age: 13 , food:"Cám"}
+        ];
+
+        // Hiển thị dữ liệu gà ban đầu
+        showChickens();
+
+        function showChickens() {
+            var table = document.getElementById("chickenTable");
+            table.innerHTML = "<tr><th>Tên</th><th>Tuổi</th><th>Thức ăn</th><th>Chỉnh sửa</th><th>Xóa</th></tr>";
+            for (var i = 0; i < chickens.length; i++) {
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                cell1.innerHTML = chickens[i].name;
+                var ageInYears = Math.floor(chickens[i].age / 12);
+                var ageInMonths = chickens[i].age % 12;
+                cell2.innerHTML = ageInYears + " tuổi " + ageInMonths + " tháng";
+                cell3.innerHTML = chickens[i].food;
+                cell4.innerHTML = '<button onclick="editChicken(' + i + ')">Sửa</button>';
+
+                cell5.innerHTML = '<button onclick="deleteChicken(' + i + ')">Xóa</button>';
+            }
+        }
+
+        function addChicken() {
+            var name = document.getElementById("chickenName").value;
+            var age = document.getElementById("chickenAge").value;
+            var food = document.getElementById("chickenFood").value;
+            if (age < 0) {
+                alert("Tuổi không thể là số âm. Vui lòng nhập số dương.");
+                return;
+            }
+            chickens.push({ name: name, age: age ,food: food});
+            showChickens();
+        }
+
+        function editChicken(index) {
+            var newName = prompt("Nhập tên mới cho gà:");
+            var newAge = prompt("Nhập tuổi mới cho gà:");
+            var newFood = prompt("Nhập thông tin thức ăn mới cho gà:");
+            chickens[index].name = newName;
+            chickens[index].age = newAge;
+            chickens[index].food = newFood;
+            showChickens();
+        }
+
+        function deleteChicken(index) {
+            chickens.splice(index, 1);
+            showChickens();
+        }
+
+        function searchChicken() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("chickenTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    var found = false;
+    td = tr[i].getElementsByTagName("td");
+    for (var j = 0; j < td.length; j++) {
+      var cell = td[j];
+      if (cell) {
+        txtValue = cell.textContent || cell.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          found = true;
+          break;
+        }
+      }
+    }
+    if (found) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
+    }
+  }
+}
+        
+        function deleteItem(index){
+            items.splice(index, 1);
+            showItems();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px outset #333;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 20%;
+            height: 100%;
+            background-color: #333;
+            transform: skewX(-45deg);
+            z-index: -1;
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 20px;
+            background-color: #333;
+            transform: skewY(-45deg);
+            z-index: -1;
+        }
+
+        .container > * {
+            padding: 40px;
+        }
+
+        .container h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .container a:hover {
+            background-color: #555;
+        }
+
+        .container .button {
+    display: inline-block;
+    padding: 15px 30px; 
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 20px; 
+}
+
+        .container .button:hover {
+            background-color: #777;
+        }
+        .container {
+    color: blue; 
+    font-family: "Arial", sans-serif; 
+}
+
+.container h1 {
+    color: red; 
+    font-size: 40px; 
+}
+
+.container p {
+    color:aqua; 
+    font-size: 18px; 
+}
+
+        .box {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 600%; 
+    height: auto;
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+
+        .box:nth-child(odd) {
+            background-color: #eaeaea;
+        }
+        .box .text {
+    color: blue; 
+    font-size: 20px; 
+}
+
+       
+
+        .box p {
+            color: #888;
+            margin-top: 10px;
+        }
+
+     
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .container > * {
+                padding: 20px;
+            }
+
+            .container h1 {
+                font-size: 35px;
+                color: #555;
+            }
+
+            .container p {
+                font-size: 14px;
+                color:red ;
+            }
+        }
+        .tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+
+.tab a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 30px 36px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+
+.tab a:hover {
+  background-color: #ddd;
+}
+
+
+.tab a.active {
+  background-color: #ccc;
+}
+
+
+.tabcontent {
+  
+  
+  
+  width: calc(100% - 60px); 
+
+  display: none;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-top: none;
+ 
+  margin: 0 auto; 
+}
+.center-menu {
+  text-align: center;
+  margin-top: 20px;
+  width: 50%;
+  font-size: 40px;
+}
+
+.center-menu a {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: lightgray;
+  margin-right: 10px;
+}
+
+.center-content {
+  text-align: center;
+}
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 30px; 
+  transition: 0.3s;
+}
+.tablinks {
+  font-size: 40px;
+  color:gold; 
+  display: flex;
+  justify-content: center;
+}
+.tab {
+  display: flex;
+  justify-content: center;
+}
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chào mừng đến với Web cá nhân của mình !</h1>
+        <p>
+            Đây là một trang web đơn giản được xây dựng bởi mình với mục đích giới thiệu cho mọi </br>người biết nhiều hơn về mình 
+        </p>
+        <a>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'menu')">Menu</button>
+            
+          </div>
+          
+          <div id="menu" class="tabcontent">
+            <div class="tab">
+              <button class="tablinks" onclick="openNestedTab(event, 'requirement')">Requirement</button>
+              <button class="tablinks" onclick="openNestedTab(event, 'design')">Design</button>
+              <button class="tablinks" onclick="redirectToImplement()(event, 'implement')">Implement</button>
+            </div>
+          </div>
+          <div class="center-content">
+            <div id="requirement" class="tabcontent">
+              <h3>Requirement</h3>
+              <p>Yêu cầu: Chọn 1 đối tượng bất kỳ trong thế giới thực, ví dụ như lớp môn học, giảng viên,…</br>
+                 Sau đó thiết kế chức năng Quản lý đối tượng đó trên html bao gồm các </br>
+                 tính năng thêm, sửa, xóa, tìm kiếm cho đối tượng đó. Ví dụ, làm chức năng Quản lý Sinh viên,</br> 
+                 bao gôm tính năng thêm, sửa, xóa, tìm kiếm. Chú ý: Các thành viên trong lớp, trong nhóm</br> 
+                 không được chọn các đối tượng giống nhau. </p>
+            </div>
+          
+            <div id="design" class="tabcontent">
+              <h3>Design</h3>
+              <div class="box">
+                <img src="images/A1.jpg" alt="Hình ảnh 1">
+                <a href="images/A1.jpg" download="images/A1.jpg">Download</a>
+              </div>
+              
+              <div class="box">
+                <img src="images/B.jpg" alt="Image 2">
+                <a href="images/B.jpg" download="images/B.jpg">Download</a>
+              </div>
+              
+  <a href="https://www.figma.com/file/n0RQO9y151M7eRSZ46J99N/Untitled?type=design&node-id=1%3A2&mode=design&t=qgf6tmQJoVX8ZVLn-1">Go To FigMa</a>
+            </div>
+            
+          </div></p>
+          
+        </a>
+        
+        <div class="image">
+            <div class="box">
+                <a href="https://www.facebook.com/xuanlanh.phan.311">Link đến Facebook</a>
+                <img class="image" src="images/fb.png" alt="Hình ảnh 1">
+                <div class="text">
+                <p>Đầu tiên là Facebook chắc không còn xa lạ gì với mọi người bởi đây chình là một trong</br>
+                     những mạng xã hội được nhiều người sử dụng nhất, nó có thể cho ta chia sẻ những cảm</br>
+                      xúc những khoảng khắc vui tươi hay buồn của mình cho mọi
+                    người để chúng ta có</br>
+                     thể thấu hiểu nhau hơn</p>
+                    </div>
+            </div>
+        
+            <div class="box">
+                <a href="mailto:22130142@st.hcmuaf.edu.vn">Link đến Gmail</a>
+                <img class="image" src="images/gm.png" alt="Hình ảnh 2">
+                <div class="text">
+                <p>Gmail, dịch vụ email của Google, mang đến cho người dùng một cách tiện lợi và nhanh chóng để</br>
+                     gửi và nhận email. Với giao diện đơn giản và dễ sử dụng, bạn có thể tận hưởng các tính năng bảo</br>
+                      mật mạnh mẽ, dung lượng lưu trữ lớn và tích hợp với các dịch vụ Google khác. Gmail là người bạn </br>
+                      đáng tin cậy để giữ liên lạc và quản lý thông điệp của bạn một cách hiệu quả.</p>
+                    </div>
+            </div>
+            <div class="box">
+                <a href="zalo https://zalo.me/g/tfheeq879">Link đến Zalo</a>
+                <img class="image" src="images/zalo.png" alt="Hình ảnh 3">
+                <div class="text">
+                <p>Zalo - Ứng dụng nhắn tin và gọi điện miễn phí hàng đầu, kết nối và trò chuyện dễ dàng với bạn bè và gia</br> 
+                    đình qua tin nhắn, hình ảnh và cuộc gọi video. Cùng tích hợp nhiều tính năng tiện lợi như gửi tiền, gọi xe</br>
+                     và đăng bài. Zalo là người bạn đồng hành không thể thiếu trong việc giao tiếp và kết nối hàng ngày.</p>
+                    </div>
+            </div>
+
+        </div>
+
+        <a href="#">Xem thêm</a>
+        
+        <script>
+       
+  function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  document.getElementById(tabName).style.display = "block";
+}
+
+function openNestedTab(evt, nestedTabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  document.getElementById(nestedTabName).style.display = "block";
+}
+function redirectToImplement(evt, implementTabName) {
+    openTab(implementTabName);
+
+  }
+  function redirectToImplement() {
+    window.location.href = "Implement.html";
+}
+function redirectToAbout() {
+                window.location.href = "about.html";
+            }
+       
+        </script>
+        <a href="#" class="button" onclick="redirectToAbout()">About</a>
+        
+    </div>
+
+</body>
+</html>
